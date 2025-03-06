@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskar's Pretrained Chatbot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #040D1E;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 95vw; /* Use 80% of the screen width */
+            height: 95vh; /* Use 80% of the screen height */
+            
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #202123;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 100%;
+        }
+
+        .chat-input {
+            background-color: #040D1E;
+            height : 5vh;
+            display: flex;
+            padding: 10px;
+            background-color: #f7f7f7;
+        }
+
+        .chat-input input {
+            background-color: #040D1E;
+            color : #fff;
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .chat-input button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            background-color: #202123;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .chat-input button:hover {
+            background-color: #333;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .user-message {
+            background-color: #202123;
+            color: #fff;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            color: #000;
+            align-self: flex-start;
+        }
+
+        .typing-animation {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #202123;
+            margin: 0 2px;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-animation:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-animation:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-6px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            Sanskar's Pretrained Chatbot
+        </div>
+        <div class="chat-body" id="chat-body">
+            <!-- Chat history will appear here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="question" placeholder="Type your question..." />
+            <button onclick="askOllama()">Ask</button>
+        </div>
+    </div>
+
+    <script>
+        async function askOllama() {
+            const question = document.getElementById("question").value;
+            const chatBody = document.getElementById("chat-body");
+
+            // Clear the input field
+            document.getElementById("question").value = "";
+
+            // Add user's question to the chat history
+            const userMessage = document.createElement("div");
+            userMessage.className = "message user-message";
+            userMessage.innerText = question;
+            chatBody.appendChild(userMessage);
+
+            // Add typing animation for bot response
+            const typingMessage = document.createElement("div");
+            typingMessage.className = "message bot-message";
+            typingMessage.innerHTML = `
+                <div class="typing-animation"></div>
+                <div class="typing-animation"></div>
+                <div class="typing-animation"></div>
+            `;
+            chatBody.appendChild(typingMessage);
+
+            // Scroll to the bottom of the chat
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            try {
+                const response = await fetch("/chatbot/ask/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ question: question })
+                });
+                const data = await response.json();
+
+                // Replace typing animation with bot's response
+                typingMessage.innerHTML = data.response;
+            } catch (error) {
+                // Display error message if the request fails
+                typingMessage.innerHTML = "An error occurred. Please try again.";
+            }
+
+            // Scroll to the bottom of the chat
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    </script>
+</body>
+</html>
