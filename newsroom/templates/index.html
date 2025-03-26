@@ -1,0 +1,571 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>The Democracy</title>
+    <style>
+      body {
+        font-family: "Times New Roman", Times, serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 5px;
+        border-bottom: 1px solid #ccc;
+      }
+      .navbar h1 {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .nav-links {
+        display: flex;
+        list-style: none;
+        padding: 0;
+      }
+      .nav-links li {
+        margin: 0 15px;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+      }
+      .auth-buttons button {
+        margin-left: 10px;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+      }
+      .auth-buttons {
+        display: flex;
+        align-items: center;
+        gap: 5px; /* Adds spacing between buttons */
+      }
+
+      .subscribe {
+        background-color: blue;
+        color: white;
+      }
+      .signin {
+        background-color: white;
+        border: 1px solid black;
+      }
+      .sidebar {
+        width: 200px;
+        padding: 20px;
+        background-color: #f4f4f4;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+      }
+      .left-sidebar {
+        left: 0;
+      }
+      .right-sidebar {
+        right: 0;
+      }
+      .main-content {
+        max-width: calc(100%); /* Adjusting width dynamically */
+        margin: 0 auto; /* Center align */
+        padding: 20px;
+      }
+      .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+      }
+      .heading {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .card-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .card {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 5px;
+        text-align: left;
+      }
+      .card img {
+        width: 100%;
+        border-radius: 5px;
+      }
+      .card h2 {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+      .card p {
+        font-size: 16px;
+      }
+      .section {
+        text-align: left;
+        margin-top: 40px;
+      }
+      .section h2 {
+        font-size: 24px;
+        font-weight: bold;
+        border-bottom: 2px solid black;
+        padding-bottom: 5px;
+      }
+      .section-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .section-main {
+        flex: 2;
+      }
+      .section-sidebar {
+        flex: 1;
+      }
+      .section img {
+        width: 100%;
+        border-radius: 5px;
+      }
+      .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+      }
+      .heading {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .three-column-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 40px;
+      }
+      .card {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 5px;
+        text-align: left;
+        background-color: white;
+      }
+      .card img {
+        width: 100%;
+        border-radius: 5px;
+      }
+      .card h2 {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+      .card p {
+        font-size: 16px;
+      }
+
+      .footer {
+        color: black;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+
+      }
+        .footer-links {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        justify-content: center; /* Centers the links horizontally */
+        align-items: center; /* Centers the items vertically */
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        gap: 10px; /* Adds space between links */
+        }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar left-sidebar">
+        <div style="width: auto; max-width: 300px; padding: 10px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+            <h2 style="font-size: 18px; margin-bottom: 10px; color: #333;">Latest Exam News <i class="fa-solid fa-star fa-beat fa-2xs" style="color: #ff0000;"></i></h2>
+            <hr>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/new-blinking.gif' %}" alt="News 1" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">ANM Vs GNM Vs BSc Nursing</a>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/new-blinking.gif' %}" alt="News 1" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">Bihar Police SI Prohibition</a>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/new-blinking.gif' %}" alt="News 1" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">GATE Scholarship 2025</a>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/new-blinking.gif' %}" alt="News 2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">JEE Advanced 2025</a>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/new-blinking.gif' %}" alt="News 3" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">
+                    KEAM 2024 - Result, Cut Off, Response Sheet</a>
+            </div>
+        </div>
+        <br>
+        <div style="width: auto; max-width: 300px; padding: 10px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+            <h2 style="font-size: 18px; margin-bottom: 10px; color: #333;">Trending in North India <i class="fa-solid fa-arrow-trend-up fa-beat fa-xs" style="color: #369900;"></i></h2>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/1.gif' %}" alt="News 1" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">Headline for news article 1</a>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/1.gif' %}" alt="News 2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">Headline for news article 2</a>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/1.gif' %}" alt="News 3" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">Headline for news article 3</a>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/1.gif' %}" alt="News 1" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">Headline for news article 1</a>
+            </div>
+        </div>
+        <br>
+        <div style="width: auto; max-width: 300px; padding: 10px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+            <h2 style="font-size: 18px; margin-bottom: 10px; color: #333;">Trending in South India <i class="fa-solid fa-arrow-trend-up fa-beat fa-xs" style="color: #369900;"></i></h2>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/1.gif' %}" alt="News 1" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">Headline for news article 1</a>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+                <img src="{% static 'images/1.gif' %}" alt="News 2" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px; margin-right: 10px;">
+                <a href="#" style="text-decoration: none; color: #007bff; font-size: 14px; flex: 1;">Headline for news article 2</a>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    
+    <div class="main-content">
+      <div class="navbar">
+        <h1>The Democracy <i class="fa-solid fa-ribbon"></i></h1>
+        <ul class="nav-links">
+          <li><a href="#">Latest</a></li>
+          <li><a href="#">World</a></li>
+          <li><a href="#">Business</a></li>
+          <li><a href="#">Indian</a></li>
+
+          <li><a href="#">Lifestyle</a></li>
+          <li><a href="#">Sports</a></li>
+          <li><a href="#">Health</a></li>
+          <li><a href="#">Style & Fashion</a></li>
+          
+          <li><a href="#">RealEstate</a></li>
+        </ul>
+        <div class="auth-buttons">
+          <button class="subscribe">Subscribe</button>
+          <button class="signin"><i class="fa-solid fa-right-to-bracket"></i></button>
+        </div>
+      </div>
+
+      <div class="container">
+
+{% comment %} Top Headlines {% endcomment %}
+{% comment %} Starting points {% endcomment %}
+        <div class="heading" style="color: #00112e;">Top Headlines <i class="fa-solid fa-thumbtack" style="color: #ff0000;"></i></div>
+        <hr>
+        <br>
+        <div class="card-container">
+          <div class="card">
+            <img src="{% static 'images/35.jpg' %}" alt="My Image" style="width:450px;height:300px;" >
+           
+            <p>IPL 2025, RR vs KKR Highlights: Quinton de Kock remains unbeaten on 97 as Kolkata Knight Riders thumped Rajasthan Royals by 8 wickets to open their account on the points table.</p>
+          
+            <br>
+            <a href="#"><i class="fa-solid fa-link"></i></a>
+        </div>
+          <div class="card">
+            <img src="{% static 'images/36.webp' %}" alt="My Image" style="width:450px;height:300px;" >
+            
+            <p>Following denials by US President Donald Trump, the White House and several top officials that no classified information was shared in the messaging group discussing plans of an attack on the Houthis in Yemen on March 15, The Atlantic has shared the full text of the chats, including screenshots, highlighting that it had received very specific information more than two hours before the start of the bombing. </p>
+            <br>
+            <a href="#"><i class="fa-solid fa-link"></i></a>  
+        </div>
+          <div class="card">
+            <img src="{% static 'images/66.webp' %}" alt="My Image" style="width:450px;height:300px;" >
+            
+            <p>The Land Rover Defender Octa has been launched in the Indian market in its latest avatar at a starting price of Rs 2.59 crore (ex-showroom). Along with this, the brand has introduced the Defender Octa Edition One, which, in the first year of production, will be available at Rs 2.79 crore (ex-showroom). Competing in the high-performance SUV market, the vehicle is a prime rival to the Mercedes-AMG G 63, which is capable of accelerating from 0-100 kmph in 4.4 seconds, while the Octa can do it in 4.0 seconds.</p>
+            <br>
+            <a href="#"><i class="fa-solid fa-link"></i></a>  
+        </div>
+          <div class="card">
+            <img src="{% static 'images/55.jpeg' %}" alt="My Image" style="width:450px;height:300px;" >
+           
+            <p>New Delhi:
+                People from all religions are safe in Uttar Pradesh, Chief Minister Yogi Adityanath has said, adding that Muslims are safe if Hindus are safe. In an interview with news agency ANI, Mr Adityanath said he is a "Yogi" and wishes for everyone's happiness. Highlighting Hindus' religious tolerance, he said, "A Muslim family is the safest among 100 Hindu families. They will have the freedom to practise all religious customs. But can 50 Hindus be safe among 100 Muslim families? No. Bangladesh is an example. Before this, Pakistan was an example. What happened in Afghanistan? If there is smoke or someone is being hit, we should be careful before we get hit. That is what needs to be taken care of." </p>
+                <br>
+                <a href="#"><i class="fa-solid fa-link"></i></a>
+          </div>
+        </div>
+{% comment %} Ending Points {% endcomment %}
+
+        <div class="section">
+
+        {% comment %} Starting Of geopolitical realations {% endcomment %}
+        <div style="display: flex; align-items: center;">
+            <h2 style="margin: 0; font-size: 28px; flex: 1; color: #0040ff;">Geopolitical Relations & Sports <i class="fa-solid fa-globe fa-lg" style="color: #0040ff;"></i></h2>
+            <button id="Geopolitical" style="background: transparent; border: none; cursor: pointer; padding: 0;">
+                <i class="fa-solid fa-up-right-from-square fa-sm" style="color: #003185;"></i>
+            </button>
+        </div>
+        <br>
+          <div class="section-container">
+            <div class="section-main">
+                <img src="{% static 'images/eu.webp' %}" alt="My Image" style="width:600px; height:400px;" >
+              <h2>Europe Wonders if Trump Can Be Bought Off With Arctic Concessions</h2>
+              <p>U.S. President Donald Trump’s hectic return to office has left America’s European allies scratching their heads. His opinions on NATO, the European Union, and Ukraine are well known—and to a degree predictable.
+
+                One issue that Trump, however, seems unexpectedly obsessed with is his bid for the United States to expand its geographical territory by annexing Greenland, a semiautonomous Arctic territory of Denmark.</p>
+                <img src="{% static 'images/2.webp' %}" alt="My Image" style="width: 600px; height:400px;" >
+              <h2>The Islands Caught in Global Crosshairs</h2>
+              <p>Greenland, the world’s largest island, has been in the news a lot lately amid U.S. President Donald Trump’s repeated promises to wrest control of the territory from Denmark. But it’s far from the only island that is a geopolitical flash point.
+
+                In recent years, FP has published a number of essays that tease out the connections between island politics and global affairs, from a Feature on Nauru’s big economic bet—which entailed abandoning long-standing ties with Taiwan for China—to a Dispatch from Cyprus, which has long been divided between a European Union member state and Turkish-recognized territory.</p>
+            </div>
+            
+            {% comment %} Ending Of geopolitical realations {% endcomment %}
+
+            {% comment %} Starting Of Sports section {% endcomment %}
+            <div class="section-sidebar">
+              <h2>Sports</h2>
+              <img src="{% static 'images/34.jpg' %}" alt="My Image" style="width:300px;height:200px;" >
+              <h3>Sourav Ganguly wants Gautam Gambhir to act on Shreyas Iyer's repeated Test, T20I snubs: 'He's ready for all formats</h3>
+              <p>Shreyas Iyer has stamped his authority with a breathtaking display of power-hitting in Punjab Kings' opening match in IPL 2025. His powerful knock of an unbeaten 97 off just 42 deliveries was key to of Punjab Kings' thrilling 11-run victory over Gujarat Titans (GT) at the Narendra Modi Stadium in Ahmedabad.              </p>
+              <img src="{% static 'images/33.jpg' %}" alt="My Image" style="width:300px;height:200px;" >
+              <h3>'Shots fired at Rohit Sharma': Fans speculate MS Dhoni's latest 'captaincy' remark an 'indirect' dig at India skipper</h3>
+              <p>The official broadcasters of the 2025 season of the Indian Premier League (IPL) recently released a lengthy interview with former Chennai Super Kings captain MS Dhoni, where the India legend touched upon various topics ranging from the IPL 2023 final, where Ravindra Jadeja hit the winning run, to the changing dynamic in the CSK dressing room after he stepped down from captaincy. He also discussed the decision to hand over the reins to Ruturaj Gaikwad.
+              </p>
+            </div>
+          </div>
+          {% comment %} Ending Of Sports section {% endcomment %}
+        </div>
+        
+        <div class="section">
+
+            {% comment %} Starting Of Arts & Lifestyle {% endcomment %}
+            <div style="display: flex; align-items: center;">
+                <h2 style="margin: 0; font-size: 28px; flex: 1; color: #026600;">Arts & Lifestyle <i class="fa-solid fa-hand-spock" style="color: #026600;"></i></h2>
+                <button id="artsandlifestyle" style="background: transparent; border: none; cursor: pointer; padding: 0;">
+                    <i class="fa-solid fa-up-right-from-square fa-sm" style="color: #003185;"></i>
+                </button>
+            </div>
+            <br>
+          <div class="section-container">
+            <div class="section-main">
+              <img src="geopolitics.jpg" alt="Geopolitical News" />
+              <h2>This Singaporean dish was invented by Indian migrants. Have you tried it?</h2>
+              <p>In an interview with HT Lifestyle, Renjie Wong, Area Director of India, Middle East and South Asia (Mumbai) - Singapore Tourism Board, shared, “In Singapore, the widespread use of Tamil, Mandarin and Malay mirrors India's rich linguistic diversity, while festivals like Deepavali and Thaipusam are observed with the same enthusiasm in both nations. The Indian Heritage Centre stands as a testament to the deep historical ties between the two, and during festive seasons, Singapore’s streets come alive with sarees, lehenga cholis and sherwanis, echoing the celebratory spirit of India. Little India, with its bustling markets, temples and cultural landmarks, further enhances this sense of familiarity for Indian travellers.”</p>
+              <hr>
+              <img src="geopolitics.jpg" alt="Geopolitical News" />
+              <h2>Interior decor, design tips: Colours to use in office or your work space to boost mood and productivity.</h2>
+              <p>Asserting that colours have the power to change your mood and mind, Kritika Goswamy Malik revealed, “Each tone or hue can significantly affect our mood and is interlinked with our mind frame. The right colours in a workplace can enhance mood, boost productivity, and create a balanced environment. For instance, blue can improve focus and efficiency. Green is a tone that helps reduce stress and promotes balance. Energising yellows and oranges can spark creativity and optimism.”</p>
+              <hr><img src="geopolitics.jpg" alt="Geopolitical News" />
+              <h2>Climate art installation that brings the global crisis to life will melt when Delhi NCR temperature hits 53°C</h2>
+              <p style="text-align: justify;">Below2° is a climate-responsive art installation at Karma Lakelands, Gurgaon, created by artist Aakash Ranison with ideation and execution by the Greener Earth Foundation.
+
+                This unique installation, made from golf balls and wax that melts at 53°C, temperature parts of Delhi NCR could reach if global warming exceeds 2°C, serves as a powerful reflection of the climate crisis. Symbolising the generation inheriting the dying world, the installation featured 1,000 repurposed golf balls handpainted by children. It is a living artwork that will melt if the NCR temperature reaches the threshold, making the urgency of climate change impossible to ignore.
+                
+                Further, in an interview with HT Lifestyle, artist Aakash Ranison and Diki Bhutia, Director, Environmental Sustainability, Karma Lakelands shared the breakdown of the art's meaning.
+                
+                Sharing their inspiration, Aakash was driven by his love for science, art, and nature to create an installation that bridges knowledge with emotion, making climate change more tangible. Diki, as a mother, felt the urgency of sustainability and the responsibility to protect the world for future generations, making Below 2° a powerful call to action.</p>
+              <hr>
+            </div>
+
+            {% comment %} Ending Of Arts & Lifestyle {% endcomment %}
+
+            {% comment %} Starting Of Healths {% endcomment %}
+            <div class="section-sidebar">
+              <h2>Health</h2>
+              <img src="sports1.jpg" alt="Sports News" />
+              <h3>Vitamin A can't prevent measles. What this supplement actually does</h3>
+              <p style="text-align: justify;">Fisher underscored that the only effective prevention against measles is vaccination.
+
+                “[V]itamin A is used when a patient already has measles and is not a [preventive] measure. Therefore, there is no indication in this era (where we get plenty of Vitamin A in the diet) to take Vitamin A to prevent measles,” Gandhi said.
+                
+                “The best way to prevent measles is to get vaccinated for measles, especially if you are in an area where the outbreak is occurring (West Texas, New Mexico).</p>
+              <img src="sports2.jpg" alt="Sports News" />
+              <h3>Healthy plant-based diets may help people with diabetes, obesity live longer</h3>
+              <p style="text-align: justify;">A new study suggests that following a healthy plant-based diet may help individuals with cardiometabolic conditions—such as obesity, diabetes, and heart disease—live longer.
+                Researchers examined data from nearly 78,000 participants with these conditions, drawn from large-scale prospective studies conducted in the U.K., U.S., and China.
+                </p>
+            </div>
+
+            {% comment %} Ending Of Healths {% endcomment %}
+          </div>
+        </div>
+
+
+
+        <div class="section">
+            <div style="display: flex; align-items: center;">
+                {% comment %} Starting Of Science & technologies {% endcomment %}
+                <h2 style="margin: 0; font-size: 28px; flex: 1; color: #ff0000;">Science & Technology <i class="fa-solid fa-robot" style="color: #ff0000;"></i></h2>
+                <button id="artsandlifestyle" style="background: transparent; border: none; cursor: pointer; padding: 0;">
+                    <i class="fa-solid fa-up-right-from-square fa-sm" style="color: #003185;"></i>
+                </button>
+            </div>
+            <br>
+          <div class="section-container">
+            <div class="section-main">
+              <img src="geopolitics.jpg" alt="Geopolitical News" />
+              <h2>You might be reading your dog’s moods wrong</h2>
+              <p>In the edited footage, the dog appeared on a black background; all environmental context had been removed. On average, participants “couldn’t tell the difference between whether the dog was happy or sad,” says Molinaro, of Arizona State University in Tempe. Only after they watched unedited footage could participants correctly rate the dog’s emotional state.</p>
+              <hr>
+              <img src="geopolitics.jpg" alt="Geopolitical News" />
+              <h2>Therapy dogs can ease young patients’ anxiety in the emergency room</h2>
+              <p>The research team evaluated the kids’ anxiety, and parents’ perception of their kids’ anxiety, with the FACES scale, which shows a series of faces in different amounts of distress. The scale ranges from zero, or no anxiety, to 10, or very severe anxiety. The baseline, self-reported score for all 80 patients was 5.4 on average. Forty-five minutes after time with the child life specialists and, for those receiving it, the dog therapy visit, the research team assessed anxiety again. The kids getting the usual care saw an average drop in their score of 1.5, while the kids who hung out with therapy dogs had an average drop of 2.7 points. The pattern held true when the parents of the kids assessed their kids’ anxiety over time.</p>
+              <hr>  
+              <img src="geopolitics.jpg" alt="Geopolitical News" />
+                <h2>Therapy dogs can ease young patients’ anxiety in the emergency room</h2>
+                <p>The research team evaluated the kids’ anxiety, and parents’ perception of their kids’ anxiety, with the FACES scale, which shows a series of faces in different amounts of distress. The scale ranges from zero, or no anxiety, to 10, or very severe anxiety.</p>
+                <hr>
+            </div>
+            {% comment %} Ending Of Science & technologies {% endcomment %}
+
+            {% comment %} Starting Of games and Tech {% endcomment %}
+            <div class="section-sidebar">
+              <h2>Technology & Esports</h2>
+              <img src="sports1.jpg" alt="Sports News" />
+              <h3>iPhone 17 Pro To Pack Major Camera Upgrade, Base Model To Get Enhanced Display, Says Mark Gurman</h3>
+              <p>ProMotion essentially indicates that the display has a refresh rate of 120 Hz. Only the iPhone Pro and Pro Max models currently have a 120 Hz refresh rate, while the standard refresh rate used by Apple's base and Plus iPhones is 60 Hz. While this is good news for users who don't want to spend a fortune on Apple's costly Pro or Pro Max versions, this feature is available in a great majority of Android</p>
+              <img src="sports2.jpg" alt="Sports News" />
+              <h3>CS2 pro Jkaem addresses skin scam allegation.</h3>
+              <p>Joey has been covering news about the gaming industry since 2024, writing about the latest releases and updates. Now, he writes about the exciting world of Esports and its development. When he's not exploring RPGs, he's foraging through patch notes for the most competitive games.</p>
+            </div>
+            {% comment %} Ending Of games and Tech {% endcomment %}
+          </div>
+        </div>
+
+<br>
+        <div class="heading">Entertainment & Media <i class="fa-solid fa-hashtag fa-lg" style="color: #003899;"></i></div>
+        <hr>
+        <div class="card-container">
+            <div class="card">
+              <img src="news1.jpg" alt="News Image" />
+              <h2>Headline 1</h2>
+              <p>Brief description of the news article goes here.</p>
+            </div>
+            <div class="card">
+              <img src="news2.jpg" alt="News Image" />
+              <h2>Headline 2</h2>
+              <p>Brief description of the news article goes here.</p>
+            </div>
+            <div class="card">
+              <img src="news3.jpg" alt="News Image" />
+              <h2>Headline 3</h2>
+              <p>Brief description of the news article goes here.</p>
+            </div>
+            <div class="card">
+              <img src="news4.jpg" alt="News Image" />
+              <h2>Headline 4</h2>
+              <p>Brief description of the news article goes here.</p>
+            </div>
+          </div>
+
+      <div class="container">
+            <div class="heading">India at a Glance <i class="fa-solid fa-feather-pointed" style="color: #B197FC;"></i></div>
+            <hr>
+                <div class="three-column-container">
+                    <div class="card">
+                         <img src="india1.jpg" alt="India News" />
+                        <h2>India Headline 1</h2>
+            <p>Brief description of Indian news.</p>
+          </div>
+          <div class="card">
+            <img src="india2.jpg" alt="India News" />
+            <h2>India Headline 2</h2>
+            <p>Brief description of Indian news.</p>
+          </div>
+          <div class="card">
+            <img src="india3.jpg" alt="India News" />
+            <h2>India Headline 3</h2>
+            <p>Brief description of Indian news.</p>
+          </div>
+        </div>
+<br>
+        <div class="heading">Asia at a Glance <i class="fa-solid fa-feather-pointed" style="color: #FFD43B;"></i></div>
+        <hr>
+        <div class="three-column-container">
+          <div class="card">
+            <img src="asia1.jpg" alt="Asia News" />
+            <h2>Asia Headline 1</h2>
+            <p>Brief description of Asian news.</p>
+          </div>
+          <div class="card">
+            <img src="asia2.jpg" alt="Asia News" />
+            <h2>Asia Headline 2</h2>
+            <p>Brief description of Asian news.</p>
+          </div>
+          <div class="card">
+            <img src="asia3.jpg" alt="Asia News" />
+            <h2>Asia Headline 3</h2>
+            <p>Brief description of Asian news.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+    <div class="sidebar right-sidebar">
+        <div style="width: auto; max-width: 300px; padding: 10px; background-color: #e3f2fd; border-radius: 8px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+            <h2 style="font-size: 18px; margin-bottom: 10px; color: #333;">Weather Status</h2>
+            <p style="font-size: 14px; margin: 5px 0; text-align: justify;">Location: <strong>New York</strong></p>
+            <p style="font-size: 14px; margin: 5px 0; text-align: justify;">Temperature: <strong>25°C</strong></p>
+            <p style="font-size: 14px; margin: 5px 0; text-align: justify;">AQI: <strong> (150)</strong>
+            <br><br>
+            Unhealthy: Health effects can be immediately felt by sensitive groups. Healthy individuals may experience difficulty breathing and throat irritation with prolonged exposure. Limit outdoor activity.
+            </p>
+        </div>
+        
+        <div style="width: auto; max-width: 300px; padding: 10px; background-color: #e8f5e9; border-radius: 8px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+            <h2 style="font-size: 18px; margin-bottom: 10px; color: #333;">5-Day Forecast</h2>
+            <table style="width: 100%; border-collapse: collapse; text-align: justify;">
+                <tr>
+                    <th style="padding: 5px; text-align: justify;">Date</th>
+                    <th style="padding: 5px; text-align: justify;">Weather</th>
+
+                </tr>
+                <tr><td style="padding: 5px; text-align: justify;">Mar 26</td><td style="padding: 5px; text-align: justify;">☀️ 28°C</td></tr>
+                <tr><td style="padding: 5px; text-align: justify;">Mar 27</td><td style="padding: 5px; text-align: justify;">🌤️ 26°C</td></tr>
+                <tr><td style="padding: 5px; text-align: justify;">Mar 28</td><td style="padding: 5px; text-align: justify;">🌦️ 24°C</td></tr>
+                <tr><td style="padding: 5px; text-align: justify;">Mar 29</td><td style="padding: 5px; text-align: justify;">🌧️ 22°C</td></tr>
+                <tr><td style="padding: 5px; text-align: justify;">Mar 30</td><td style="padding: 5px; text-align: justify;">☁️ 20°C</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        <ul class="footer-links">
+            <li><a href="#">Latest</a></li>
+            <li><a href="#">World</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Politics</a></li>
+            <li><a href="#">Tech</a></li>
+            <li><a href="#">Opinion</a></li>
+            <li><a href="#">Lifestyle</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Lifestyle</a></li>
+            <li><a href="#">Sports</a></li>
+          </ul>
+      <p>&copy; 2025 The Democracy. All rights reserved.</p>
+    </div>
+  </body>
+</html>
