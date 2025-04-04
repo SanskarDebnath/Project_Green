@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f7fa;
+        color: #1c1c1e;
+      }
+
+      .navbar {
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        padding: 16px 24px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-brand {
+        font-size: 20px;
+        font-weight: 600;
+        color: #1c1c1e;
+        text-decoration: none;
+        margin-right: 24px;
+      }
+
+      .nav-link {
+        font-size: 15px;
+        color: #636366;
+        text-decoration: none;
+        margin-right: 16px;
+        transition: color 0.2s ease;
+      }
+
+      .nav-link:hover {
+        color: #007aff;
+      }
+
+      .container {
+        display: flex;
+        min-height: calc(100vh - 60px);
+      }
+
+      .sidebar {
+        width: 240px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        border-right: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 20px;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+        overflow-y: auto;
+      }
+
+      .sidebar-item {
+        padding: 12px 16px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 500;
+        color: #636366;
+        border-left: 3px solid transparent;
+      }
+
+      .sidebar-item:hover {
+        background: rgba(255, 255, 255, 0.7);
+        color: #007aff;
+      }
+
+      .sidebar-item.active {
+        background: rgba(0, 122, 255, 0.1);
+        color: #007aff;
+        border-left: 3px solid #007aff;
+        font-weight: 600;
+      }
+
+      .content {
+        flex: 1;
+        padding: 30px 40px;
+        max-width: 800px;
+        margin: 0 auto;
+        overflow-y: auto;
+      }
+
+      .content-section {
+        padding: 0 0 24px 0;
+        margin-bottom: 24px;
+      }
+
+      .content-section:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        font-size: 20px;
+        margin-top: 0;
+        margin-bottom: 16px;
+        color: #1c1c1e;
+        font-weight: 600;
+        padding-top: 24px;
+        scroll-margin-top: 20px;
+      }
+
+      h2:target {
+        background-color: rgba(0, 122, 255, 0.1);
+        padding: 10px;
+        border-radius: 6px;
+        animation: highlight 1.5s ease;
+      }
+
+      @keyframes highlight {
+        0% {
+          background-color: rgba(0, 122, 255, 0.3);
+        }
+        100% {
+          background-color: rgba(0, 122, 255, 0.1);
+        }
+      }
+
+      p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #3a3a3c;
+        margin-bottom: 16px;
+      }
+
+      hr {
+        border: 0;
+        height: 1px;
+        background: rgba(0, 0, 0, 0.1);
+        margin: 24px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#" class="navbar-brand">TechCorp</a>
+      <a href="#" class="nav-link">Home</a>
+      <a href="#" class="nav-link">Privacy Policy</a>
+    </nav>
+
+    <div class="container">
+      <div class="sidebar">
+        <div class="sidebar-item" onclick="scrollToSection('introduction')">
+          INTRODUCTION
+        </div>
+        <div class="sidebar-item" onclick="scrollToSection('data-collect')">
+          DATA WE COLLECT
+        </div>
+        <div class="sidebar-item" onclick="scrollToSection('data-use')">
+          HOW WE USE THE DATA WE OBTAIN
+        </div>
+        <div class="sidebar-item" onclick="scrollToSection('data-sharing')">
+          DATA SHARING
+        </div>
+        <div class="sidebar-item" onclick="scrollToSection('choices-rights')">
+          YOUR CHOICES AND RIGHTS
+        </div>
+        <div class="sidebar-item" onclick="scrollToSection('data-protection')">
+          HOW WE PROTECT PERSONAL DATA
+        </div>
+        <div class="sidebar-item" onclick="scrollToSection('other-info')">
+          OTHER IMPORTANT INFORMATION
+        </div>
+        <div class="sidebar-item" onclick="scrollToSection('contact')">
+          CONTACT US
+        </div>
+      </div>
+
+      <div class="content">
+        <div id="introduction" class="content-section">
+          <h2>INTRODUCTION</h2>
+          <p>
+            <b>Welcome to The Democracy</b>: Your Trusted Global News Source In
+            an era of rapid information flow, the need for credible, unbiased,
+            and insightful journalism has never been more critical. The
+            Democracy is an India-based online news platform that brings you
+            real-time updates and in-depth analyses from across the globe. With
+            a steadfast commitment to journalistic integrity and a passion for
+            truth, we stand as a beacon of responsible reporting in a world
+            often clouded by misinformation and sensationalism.
+          </p>
+          <p>
+            At The Democracy, we believe that news should not only inform but
+            also empower. Our platform is dedicated to delivering
+            well-researched, fact-based journalism that helps our audience make
+            informed decisions. Whether it’s breaking news, investigative
+            reports, political analysis, economic trends, technological
+            advancements, cultural movements, or global affairs, we strive to
+            provide comprehensive coverage that resonates with readers from all
+            walks of life. The core philosophy of The Democracy is simple yet
+            profound: journalism must serve the people. We adhere to the
+            principles of accuracy, fairness, and impartiality, ensuring that
+            our readers receive news that is free from bias and external
+            influence. As a digital-first news outlet, we leverage cutting-edge
+            technology to provide real-time updates and interactive
+            storytelling, keeping our audience engaged with the most pressing
+            global issues. We stand firm against the rise of fake news and
+            manipulated narratives. In an age where digital misinformation
+            spreads rapidly, our team of experienced journalists and analysts
+            works diligently to verify facts, cross-check sources, and provide
+            clarity amidst the noise. Though rooted in India, The Democracy
+            extends its reach far beyond national borders. We cover world
+            affairs with an in-depth perspective, analyzing how global events
+            impact different regions, including India. From geopolitical
+            tensions and economic policies to social movements and environmental
+            concerns, we present stories with depth and context, making sure our
+            readers grasp the bigger picture. India’s role in global affairs is
+            evolving, and The Democracy aims to provide a platform that bridges
+            international narratives with local realities. We bring you expert
+            opinions, exclusive interviews, and thoughtful editorials that
+            highlight India's growing influence in world affairs, ensuring our
+            readers stay ahead in an interconnected world. We understand that
+            diversity is key to a holistic news experience. Our editorial team
+            comprises professionals from different backgrounds, cultures, and
+            experiences, ensuring that our reporting reflects a multitude of
+            voices. We actively encourage citizen journalism and provide a space
+            for underrepresented communities to share their stories, making our
+            platform truly democratic in nature. From grassroots movements to
+            elite power corridors, from emerging economies to established global
+            powers, The Democracy covers stories that matter. Our investigative
+            journalism section delves into issues that often go unnoticed,
+            shedding light on stories that need to be told. News is not just
+            about reporting; it’s about engaging and fostering discussion. We
+            encourage our readers to be part of the conversation through
+            comments, debates, and interactive forums. Our newsletters,
+            podcasts, and video content add another layer of engagement, making
+            news consumption an enriching experience. In a world where
+            information is abundant but clarity is scarce, The Democracy is here
+            to redefine news consumption. We are more than just a news website;
+            we are a movement towards a well-informed society that values truth,
+            justice, and democracy. Join us in our journey as we strive to bring
+            the world closer, one story at a time.
+          </p>
+          <hr />
+        </div>
+
+        <div id="data-collect" class="content-section">
+          <h2>DATA WE COLLECT</h2>
+          <p>
+            At The Democracy, we value your privacy and are committed to
+            maintaining transparency regarding the data we collect. We obtain
+            information about you from a variety of sources, including personal
+            data you provide to us directly, data obtained from other sources,
+            and data gathered through automated means. 1. Data You Provide to Us
+            We collect personal data that you provide when you interact with The
+            Democracy, including but not limited to: Contact Information: Name,
+            email address, postal address, and phone number when you sign up for
+            our services. Transactional and Financial Data: Payment information
+            when you subscribe to premium content or donate to support our
+            journalism. Event Registration Data: Occupation, interests, and
+            other details when you register for our events, webinars, or
+            conferences. User-Generated Content: Comments, forum posts, and any
+            other content you share publicly on our platform. Profile
+            Information: Education, interests, and other personal details
+            provided while creating an account or participating in surveys,
+            contests, or interactive features. Customer Support Data: Messages
+            and information shared when contacting our support team via email,
+            chat, or phone. Interactive Features: Data shared through chatbots,
+            QR code interactions, or article-sharing features. Referrals: If you
+            refer a friend or associate to The Democracy, we may collect their
+            name and email address (where applicable and legally permitted). By
+            using The Democracy, you acknowledge and agree to our data
+            collection policies. We handle your data responsibly, ensuring it is
+            used solely to enhance your experience and provide relevant content.
+          </p>
+          <p>
+            The personal information we collect may include the following:
+            names, email addresses, phone numbers, mailing addresses, contact
+            preferences, and other similar information.
+          </p>
+          <hr />
+        </div>
+
+        <div id="data-use" class="content-section">
+          <h2>HOW WE USE THE DATA WE OBTAIN</h2>
+          <p>
+            We use personal information collected via our services for a variety
+            of business purposes described below. We process your personal
+            information for these purposes in reliance on our legitimate
+            business interests, in order to enter into or perform a contract
+            with you, with your consent, and/or for compliance with our legal
+            obligations.
+          </p>
+          <p>
+            We use the information we collect or receive to facilitate account
+            creation and logon process, to send administrative information to
+            you, to fulfill and manage your orders, to post testimonials, to
+            request feedback, and to protect our services.
+          </p>
+          <hr />
+        </div>
+
+        <div id="data-sharing" class="content-section">
+          <h2>DATA SHARING</h2>
+          <p>
+            We only share information with your consent, to comply with laws, to
+            provide you with services, to protect your rights, or to fulfill
+            business obligations.
+          </p>
+          <p>
+            We may process or share your data that we hold based on the
+            following legal basis: consent, legitimate interest, performance of
+            a contract, legal obligations, and vital interests.
+          </p>
+          <hr />
+        </div>
+
+        <div id="choices-rights" class="content-section">
+          <h2>YOUR CHOICES AND RIGHTS</h2>
+          <p>
+            You have certain rights regarding your personal information. In some
+            regions (like the European Economic Area), you have rights that
+            allow you greater access to and control over your personal
+            information.
+          </p>
+          <p>
+            You may review, change, or terminate your account at any time. You
+            have the right to request access to and receive a copy of your
+            personal information, to request rectification or erasure, and to
+            restrict the processing of your personal information.
+          </p>
+          <hr />
+        </div>
+
+        <div id="data-protection" class="content-section">
+          <h2>HOW WE PROTECT PERSONAL DATA</h2>
+          <p>
+            We have implemented appropriate technical and organizational
+            security measures designed to protect the security of any personal
+            information we process.
+          </p>
+          <p>
+            However, please also remember that we cannot guarantee that the
+            internet itself is 100% secure. Although we will do our best to
+            protect your personal information, transmission of personal
+            information to and from our services is at your own risk.
+          </p>
+          <hr />
+        </div>
+
+        <div id="other-info" class="content-section">
+          <h2>OTHER IMPORTANT INFORMATION</h2>
+          <p>
+            We may update this privacy notice from time to time. The updated
+            version will be indicated by an updated "Revised" date and the
+            updated version will be effective as soon as it is accessible.
+          </p>
+          <p>
+            We encourage you to review this privacy notice frequently to be
+            informed of how we are protecting your information. If we make
+            material changes to this privacy notice, we may notify you either by
+            prominently posting a notice of such changes or by directly sending
+            you a notification.
+          </p>
+          <hr />
+        </div>
+
+        <div id="contact" class="content-section">
+          <h2>CONTACT US</h2>
+          <p>
+            If you have questions or comments about this notice, you may email
+            us at privacy@techcorp.com or by post to:
+          </p>
+          <p>
+            TechCorp Inc.<br />
+            123 Privacy Lane, Suite 100<br />
+            San Francisco, CA 94103<br />
+            United States
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        section.scrollIntoView({ behavior: "smooth" });
+
+        // Update active state in sidebar
+        document.querySelectorAll(".sidebar-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+        event.currentTarget.classList.add("active");
+
+        // Add highlight effect to the section header
+        section.querySelector("h2").scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Highlight the section in view
+      window.addEventListener("scroll", function () {
+        const sections = document.querySelectorAll(".content-section");
+        let currentSection = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= sectionTop - 100) {
+            currentSection = section.getAttribute("id");
+          }
+        });
+
+        document.querySelectorAll(".sidebar-item").forEach((item) => {
+          item.classList.remove("active");
+          if (
+            item.textContent.trim() ===
+            document.getElementById(currentSection).querySelector("h2")
+              .textContent
+          ) {
+            item.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

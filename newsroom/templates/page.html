@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Django Page</title>
+</head>
+<body>
+    <h1>Yahoo Weather Report for {{ weather.location.city }}</h1>
+
+{% if weather.forecasts %}
+    <ul>
+        {% for day in weather.forecasts %}
+            <li>
+                <strong>Date:</strong> {{ day.date }} <br>
+                <strong>Condition:</strong> {{ day.text }} <br>
+                <strong>High Temp:</strong> {{ day.high }}°C <br>
+                <strong>Low Temp:</strong> {{ day.low }}°C <br>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No weather data available.</p>
+{% endif %}
+
+    
+</body>
+</html>
